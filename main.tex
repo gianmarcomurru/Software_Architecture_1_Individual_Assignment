@@ -1,0 +1,164 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={12cm, 22cm}]{geometry} % MARGIN 15.5 instead of 14 was initial
+
+\usepackage{comment} 
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{dirtytalk}
+% \usepackage[dvipsnames]{xcolor}
+
+% Table generating
+\usepackage{booktabs, multirow} % for borders and merged ranges
+\usepackage{soul}% for underlines
+\usepackage[table]{xcolor} % for cell colors
+\usepackage{changepage,threeparttable} % for wide tables
+
+% checkmark list
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{2em}
+
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{longtable}
+\usepackage{markdown}
+\usepackage{pdfpages}
+
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+
+
+% FOOTER AND HEADER %
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\pagestyle{fancy} 
+\newcommand{\frontmatter}{\clearpage \cfoot{\thepage\ }
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\setcounter{page}{1}
+\pagenumbering{Roman}}
+\newcommand{\mainmatter}{\clearpage \cfoot{\thepage\ of \pageref{LastPage}}
+\fancyhead[LE,RO]{Group 2}\fancyhead[RE,LO]{\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\setcounter{page}{1}
+\pagenumbering{arabic}}
+\newcommand{\backmatter}{\clearpage \cfoot{\thepage\ }
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\setcounter{page}{1}
+\pagenumbering{alph}}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+% Front page background %
+\usepackage[
+firstpage=true,
+opacity=0.20,
+angle=0,
+]{background}
+\backgroundsetup{contents={\includegraphics[scale=0.1]{template/background.jpg}}}
+
+\fancypagestyle{mylandscape}{%
+  \fancyhf{}% Clear header/footer
+  \fancyfoot{% Footer
+    \makebox[\textwidth][r]{% Right
+      \rlap{\hspace{\footskip}% Push out of margin by \footskip
+        \smash{% Remove vertical height
+          \raisebox{\dimexpr.5\baselineskip+\footskip+.5\textheight}{% Raise vertically
+            \rotatebox{90}{\thepage}}}}}}% Rotate counter-clockwise
+  \renewcommand{\headrulewidth}{0pt}% No header rule
+  \renewcommand{\footrulewidth}{0pt}% No footer rule
+}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+
+        \Huge
+        \textbf{Zeeguu API}
+        
+        \vspace{0.5cm}
+        
+        \Large
+        Individual Assignment
+            
+        \vspace{1.5cm}
+         
+        \textbf{Gianmarco Murru (gimu@itu.dk)}
+            
+        \vspace{1.5cm}
+        
+       
+            
+        \vfill
+            
+      Software Architecture, MSc\\
+         KSSOARC2KU
+            
+        \vspace{0.8cm}
+            
+        \includegraphics[width=0.5\textwidth]{template/ITU_logo_UK jpg.jpg}
+            
+        \Large
+        Department of Computer Science\\
+        Denmark\\
+        Spring 2022
+            
+    \end{center}
+\end{titlepage}
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+
+\section{Introduction}
+The Zeeguu Ecosystem aims to help people to learn other languages. It is an ecosystem formed by different components, the next section will briefly introduce them and the way they interact with each others.\\\\
+This report will focus on the Zeeguu API, which is the back-end for the website \url{https://www.zeeguu.org}. 
+
+\subsection{Zeeguu Ecosystem}
+The Zeeguu Ecosystem consist in 
+
+\subsection{What is the system?}
+Zeeguu API is a Restful API written in Python. Other systems like the front-end, can use the API to retrieve data. The API is also responsible to communicate with the Zeeguu Core.
+\subsection{What is the problem?}
+(e.g. most architecturally relevant modules? most architecturally relevant classes? etc.)
+\section{Methodology}
+\subsection{Tool support}
+did you use any off-the shelf tools? Your own scripts? 
+\subsection{Data gathering}
+what sources of data did you use? Source viewpoints? Reverse engineering patterns? 
+\subsection{Knowledge inference}
+did you use any abstraction approach? What target viewpoint do you want to recover?( the architectural viewpoints can be the ones we discuss in the lectures, or you can design your own; I'm happy to see your creativity in action. If you want to create a new viewpoint, but you're not sure about it, discuss with us)
+\section{Results }
+(One or several) Architectural views that you recovered from the analysis of the system
+Explain the elements in the architectural view(s)
+​​[optional] Recommendations for reengineering of the system (did you discover things that seem wrong and should be corrected?)
+\section{Discussion }
+What are the limitations of your approach 
+What worked what would you do it better next time?
+\section{Appendix}
+Scripts that you wrote or used or (preferable) link to GH repository
+[optional] Time allocation: how did you spend your time
+
+
+\label{LastPage}~
+
+\backmatter 
+\printbibliography
+\end{document}
